@@ -19,9 +19,9 @@ from numpy import *
 min_max_scaler = preprocessing.MinMaxScaler()
 
 #Import dataset
-RUL_F001 = np.loadtxt('./cmapss/RUL_FD001.txt')
-train_F001 = np.loadtxt('/cmapss/train_FD001.txt')
-test_F001 = np.loadtxt('/cmapss/test_FD001.txt')
+RUL_F001 = np.loadtxt('./CMaps/RUL_FD001.txt')
+train_F001 = np.loadtxt('./CMaps/train_FD001.txt')
+test_F001 = np.loadtxt('./CMaps/test_FD001.txt')
 train_F001[:, 2:] = min_max_scaler.fit_transform(train_F001[:, 2:])
 test_F001[:, 2:] = min_max_scaler.transform(test_F001[:, 2:])
 train_01_nor = train_F001
@@ -29,8 +29,8 @@ test_01_nor = test_F001
 
 
 #Delete worthless sensors
-train_01_nor = np.delete(train_01_nor, [5, 9, 10, 14, 20, 22, 23], axis=1) 
-test_01_nor = np.delete(test_01_nor, [5, 9, 10, 14, 20, 22, 23], axis=1)  
+# train_01_nor = np.delete(train_01_nor, [5, 9, 10, 14, 20, 22, 23], axis=1) 
+# test_01_nor = np.delete(test_01_nor, [5, 9, 10, 14, 20, 22, 23], axis=1)  
 train_01_nor = np.delete(train_01_nor, [2,3,4,5, 9, 10, 14, 20, 22, 23], axis=1) 
 test_01_nor = np.delete(test_01_nor, [2,3,4,5, 9, 10, 14, 20, 22, 23], axis=1) 
 
@@ -133,7 +133,7 @@ sio.savemat('F001_window_size_testX.mat', {"test1X": testX})
 sio.savemat('F001_window_size_testY.mat', {"test1Y": testY})
 
      
- '''       
+''' 
 # Statistical features process 
         
 regr = linear_model.LinearRegression()  # feature of linear coefficient
@@ -206,12 +206,4 @@ testX_new = np.array(testX_new)
         
 sio.savemat('F001_window_size_trainX_new.mat', {"train1X_new": trainX_new})
 sio.savemat('F001_window_size_testX_new.mat', {"test1X_new": testX_new})   
-'''       
-        
-        
-        
-        
-
-
-
-
+'''
