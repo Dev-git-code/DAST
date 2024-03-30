@@ -49,7 +49,7 @@ class JetEngineDataset(Dataset):
         labels_mat = loadmat(file_path_labels)
         # Extract data and labels from loaded MATLAB structures
         self.data = torch.tensor(data_mat[dataName], dtype=torch.float32)
-        self.labels = torch.tensor(labels_mat[labelsName], dtype=torch.float32)
+        self.labels = torch.tensor(labels_mat[labelsName].squeeze(), dtype=torch.float32)
 
     def __len__(self):
         return len(self.data)
